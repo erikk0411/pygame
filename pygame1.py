@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+import time
 pygame.init()
 # 3840 x 2160
 screen = pygame.display.set_mode((1000, 750))
@@ -15,12 +16,12 @@ scorestr=str(scoreint)
 
 font = pygame.font.Font("agencyb.ttf",100)
 text = font.render(scorestr,True,(183,255,250))
-
-text_rect = text.get_rect(center=(1000/2, 750/2))
-
+text_rect= text.get_rect(center=(1000//2,750//2))
 
 
-playerimg = pygame.image.load("racket.png")
+
+
+playerimg = pygame.image.load("rocketfr.png")
 playerx = 425
 playery = 550
 playerx_change = 0
@@ -28,7 +29,7 @@ playerx_change = 0
 pxcp = 0.25
 
 #skott
-bulletimg = pygame.image.load("bullet.png")
+bulletimg = pygame.image.load("skott_racket.png")
 bulletx = 0
 bullety = 550
 bulletx_change = 0
@@ -39,7 +40,7 @@ bullet_state = "ready"
 rockimg = pygame.image.load("rock.png")
 rockx = random.randint(100,850)
 rocky = 0
-rocky_change =0.1
+rocky_change =1
 rock_state = "ready"
 
 spel_state=0
@@ -124,6 +125,7 @@ while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+        time.sleep(0.1)
         pygame.display.update()
     if spel_state == 1:
         screen.fill((0, 255, 255))
@@ -188,4 +190,5 @@ while running:
             scoreint = 0
             spel_state = 0
             rocky = 0
+        time.sleep(0.01)
         pygame.display.update()
